@@ -65,7 +65,7 @@ printf "How many is binary? $(ebse '(+ 1 1)')\n"
 - Create a new macro.
 - Triggered by 'This String Is Typed': "eBS"
   - "case must match"
-    - If you /didn't/ rename your script from ~ebse~ to something else, then Keyboard Maestro will keep executing this macro while you are typing ~ebse~, which is awkward!
+    - If you /didn't/ rename your script from ~ebse~ to something else, then Keyboard Maestro will keep executing this macro while you are typing ~ebse~, which is awkward! Case-sensitive execution avoids this confusing situation. 
 - Add an action: [[https://wiki.keyboardmaestro.com/action/Execute_a_Shell_Script][Execute Shell Script]].
 - Choose "Execute text script" and "type results".
 - In the input box add this:
