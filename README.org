@@ -1,0 +1,34 @@
+#+title: Emacs Batch Server Eval
+
+* TLDR
+
+Get unquoted result from Emacs server ~eval~.
+
+* About
+
+Emacs is powerful. Using Emacs as a shell command is even more powerful. Most of us first attempt that by using ~emacsclient --eval EXPR~. Unfortunately, we quickly run into an annoying problem: automatically quoted string result values!
+
+Shell functions don't automatically quote returned string values. Doing so would result in unpredictable behavior /at best/. More likely, something /bad/ would happen. Good user-defined functions don't auto-quote strings either: that must include using Emacs as a shell command. So why doesn't using Emacs as a shell command behave so well out of the box? Well, it does act right, for Emacs, that is, just not for you: here is why.
+
+Emacs server begins by delegating ~EXPR~'s evaluation to ~(describe-symbol 'server-eval-and-print)~. After ~(describe-symbol 'eval)~'ing ~EXPR~, the result gets formatted by ~(describe-symbol 'pp)~ with a singular goal: quote the result to make output that ~(describe-symbol 'read)~ can handle. Emacs reads strings as characters encased in double-quotes, ~read~ can read that string format; therefore, Emacs server ~eval~ returns that [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Printed-Representation.html][printed representation]] and voilà: that is why Emacs as a shell command auto quotes its return values. Now you must ask yourself, "Where do we begin /fixing/ this?". Well, here, next, is where!
+
+When you run the shell command ~printf "Hello, world.\n"~, ~printf~ behaves just like any other shell command: ~Hello, world.~ appears on the terminal /without / automatically quoted strings. The question is then: how do we make Emacs as a shell command.  The answer is simple: we follow the /standard/ approach for printing things in the shell!
+
+~printf~ is free to print out /whatever/ it wants /however/ it wants simply by writing directly to the ~STDOUT~ stream. Emacs as a shell command can do the same thing, and it is simple: run Emacs in [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Batch-Mode.html][Batch Mode]]! In Batch Mode [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Output-Functions.html][Output Functions]] print to ~STDOUT~. Start Emacs with ~--batch~ and you are in batch mode: that is all it takes. What remains now is how do we string that all together to use Emacs as a properly behaving shell command? Yet again, the answer is simple: it comes in the form of a convenient little entry point into the Emacs server named ~(describe-symbol 'server-eval-at)~.
+
+Emacs server operates in a client-server architecture. Emacs server is the server; it sits around running, waiting for someone to tell it to do something. Clients connect to it and ask it to do things. ~emacsclient~ is an excellent example of a client: you run it, it connects to the Emacs server, and it does something.  Like you already saw, though: it can't redirect its output to ~STDOUT~, problem un-solved! Is there a way to create a client ourselves, one that somehow prints to ~STDOUT~? Yes, ~server-eval-at~ lets us programmatically create an Emacs server client! By stringing together all of these factoids now, we can get everything we want and need.
+
+Here is how:
+- Start Emacs in batch mode, so it redirects all output to ~STDOUT~.
+- Programatically create an Emacs server client using ~server-eval-at~ by using the ~--eval~ argument to Emacs.
+- Upon calling it, your client will connect to your Emacs server and delegate its work to ~server-eval-and-print~. Just like before, it will ~EVAL~ your code and return it to the client for printing.
+- Since your client is running in batch mode, its output goes directly to ~STDOUT~.
+- You got exactly what you wanted: using Emacs as a shell command no longer auto-quotes string results!
+From here, you can use Emacs as a shell command anywhere.
+
+For convenience, this project demonstrates /my personal/ approach to setting it up. It happens to work in both Login Shells /and/ Non-Interactive Non-Login shells too! It's perfect for running from the terminal, from batch jobs, and even something as fun and powerful as [[https://www.keyboardmaestro.com/main/][Keyboard Maestro]].
+
+Keyboard Maestro, combined with the approach above, grants access to your entire Emacs environment from literally anywhere within MacOS. Talk about the best of both worlds: you will be rocking on MacOS like you never have before. Trust me: you will love it!
+
+Have fun and be well fellow Emacsers. We live in a kind, prosperous, and creative world. For hackers like us, there is truly nothing better than here. Hack on!
+
