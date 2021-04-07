@@ -1,0 +1,8 @@
+#!/usr/local/bin/bash
+
+export EBSESOCKET="/Users/gcr/server-sockets/emacs.sock"
+export EBSEHOME="/Users/gcr/src/ebse"
+
+source "$EBSEHOME/ebsefn.sh"
+
+ebse "$@"

@@ -26,9 +26,32 @@ Here is how:
 - You got exactly what you wanted: using Emacs as a shell command no longer auto-quotes string results!
 From here, you can use Emacs as a shell command anywhere.
 
-For convenience, this project demonstrates /my personal/ approach to setting it up. It happens to work in both Login Shells /and/ Non-Interactive Non-Login shells too! It's perfect for running from the terminal, from batch jobs, and even something as fun and powerful as [[https://www.keyboardmaestro.com/main/][Keyboard Maestro]].
+For convenience, this project demonstrates /my personal/ approach to setting it up. It happens to work in both Login Shells /and/
+Non-Interactive Non-Login shells too! It's perfect for running from the terminal, from batch jobs, and even something as fun and powerful as [[https://www.keyboardmaestro.com/main/][Keyboard Maestro]].
 
 Keyboard Maestro, combined with the approach above, grants access to your entire Emacs environment from literally anywhere within MacOS. Talk about the best of both worlds: you will be rocking on MacOS like you never have before. Trust me: you will love it!
 
 Have fun and be well fellow Emacsers. We live in a kind, prosperous, and creative world. For hackers like us, there is truly nothing better than here. Hack on!
 
+* My Setup (EBSE)
+
+EBSE is my simple implementation of the above approach. It is so simplistic and so specific that I recommend you not attempt to customize it.
+
+The /only/ thing you need to read is the ~ebse~ function definition in ~ebsefn.sh~: specifically the Emacs invocation command.
+
+It only takes one line of code to implement the approach described here! It is so cool. Just copy that line into your setup, and bam, you are done.
+
+So you can see it in actions: here are some examples of using it. It works as you would expect any other shell function:
+
+#+BEGIN_SRC sh
+ebse '(message "Hello, world.")'
+# Results go to STDOUT just like you expect.
+ebse '(message "Hello, world.")' >> ~/tmp/log.txt
+ebse "(+ 1 1)"
+ebse "emacs-version"
+# Use it in an argument
+printf "How many is binary? $(ebse '(+ 1 1)')\n"
+# Use it in a Non-Interactive Non-Login shell
+# with the helper script ~ebse~.
+~/src/ebse/ebse "(+ 1 1)"
+#+END_SRC
