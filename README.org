@@ -55,3 +55,26 @@ printf "How many is binary? $(ebse '(+ 1 1)')\n"
 # with the helper script ~ebse~.
 ~/src/ebse/ebse "(+ 1 1)"
 #+END_SRC
+
+* Using EBSE With Keyboard Maestro
+
+[[https://www.keyboardmaestro.com/main/][Keyboard Maestro]] is a brilliant application. It does a million things, well, and it is easy to play around with it given the infinite evaluation period. Still, I only wanted it to do one thing: *use Emacs from anywhere inside MacOS*. Fortunately, it turns out to be easy. Here is all it takes:
+
+- First, find some cool Elisp code to run, then insert the results into your macOS app. [[https://github.com/grettke/corporate-bs-generator][corporate-bs-generator]] is a perfect example.
+- Configure ~ebse~ (or something like it).
+- Create a new macro.
+- Triggered by 'This String Is Typed': "eBS"
+- Add an action: [[https://wiki.keyboardmaestro.com/action/Execute_a_Shell_Script][Execute Shell Script]].
+- Choose "Execute text script" and "type results".
+- In the input box add this:
+  #+BEGIN_SRC sh
+~/src/ebse/ebse "(corporate-bs-generator-make)"
+  #+END_SRC
+- Test it out first by choosing to "display results in a window" and click "Try". You should see something like this:
+  #+BEGIN_SRC sh
+conveniently pursue viral initiatives
+  #+END_SRC
+- Now, switch it back to "type results".
+- From here on in, you can return to work with your newfound powerful combination of Emacs and Keyboard Maestro and rise the corporate ranks by compellingly scaling technically sound NoSQL or some such things!
+
+Suddenly you get the best of both worlds: 100% of Emacs available on 100% of your computer. It works brilliantly. I hope you have a lot of fun!
