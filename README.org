@@ -41,7 +41,7 @@ The /only/ thing you need to read is the Emacs invocation in the ~ebse~ function
 
 It only takes one line of code to implement the approach described here! It is so cool. Just copy that line into your setup, and bam, you are done.
 
-So you can see it in actions: here are some examples of using it. It works as you would expect any other shell function:
+So you can see it in action: here are some examples of using it. It works as you would expect any other shell function:
 
 #+BEGIN_SRC sh
 ebse '(message "Hello, world.")'
