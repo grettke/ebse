@@ -35,7 +35,7 @@ Have fun and be well fellow Emacsers. We live in a kind, prosperous, and creativ
 
 * My Setup (EBSE)
 
-EBSE is my simple implementation of the above approach. It is so simplistic and so specific that I recommend you write your own instead of customizing it for your situation. It would be embarrassing for you to see how it works. If there is one redeeming feature abou reading my code as an example: it is that it is set up both to work in interactive and non-interactive non-login shell.
+EBSE is my simple implementation of the above approach. It is so simplistic and so specific that I recommend you write your own instead of customizing it for your situation. It would be embarrassing for you to see how it works. There is a single redeeming value if you must read it: it works in both interactive and non-interactive non-login shells.
 
 The /only/ thing you need to read is the Emacs invocation in the ~ebse~ function definition in ~ebsefn.sh~.
 
