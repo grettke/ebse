@@ -1,5 +1,7 @@
 #+title: Emacs Batch Server Eval
 
+[[file:/demo.png]]
+
 * TLDR
 
 Get unquoted result from Emacs server ~eval~.
