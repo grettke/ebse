@@ -2,7 +2,8 @@
 
 export EBSESOCKET="/Users/gcr/server-sockets/emacs.sock"
 export EBSEHOME="/Users/gcr/src/ebse"
+export EBSELIB="$EBSEHOME/ebsefn.sh"
 
-source "$EBSEHOME/ebsefn.sh"
+source "$EBSELIB"
 
 ebse "$@"
