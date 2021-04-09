@@ -58,6 +58,28 @@ printf "How many is binary? $(ebse '(+ 1 1)')\n"
 ~/src/ebse/ebse "(+ 1 1)"
 #+END_SRC
 
+* Using EBSE as a Proxy to an Interactive Shell
+
+Like me, most of you are already running an interactive shell instance. Even more likely, you invoked your Emacs from there. Consequently, your interactive shell environment is configured perfectly: ~PATH~, aliases functions, and everything else is /just right/ for you: you are ready to get some work done. Unfortunately, then comes the bad news: you need to get some work done using a non-interactive shell.
+
+Non-interactive shells don't run the [[https://www.gnu.org/software/bash/manual/html_node/Bash-Startup-Files.html][Bash Startup Sequence]], so your carefully crafted system amounts to nothing as far as the non-interactive shell is concerned. Before doing your work, you have to reconfigure everything you need, /again/, before starting with the /real/ job at hand. Yuck! Fortunately, there is a workaround: Emacs! Don't tell me you are surprised! It's simple.
+
+Here is why: Emacs is already running in your interactive shell with everything you need, and you can easily interact with it using ~server-eval-at~. Want to work with your shell? Emacs has got you covered. Just call any member of the ~shell-command~ family of functions.
+
+You run your non-interactive shell, connect to the Emacs server on your interactive shell, and execute your interactive shell's commands using the ~shel-command~ family of functions. It is simple.  For example, here is how it might look to call Fortune:
+
+#+begin_src bash
+~/src/ebse/ebse '(shell-command-to-string "fortune")'
+#+end_src
+
+You get the picture.
+
+Now you have remote access to Emacs along with a proxy to your interactive shell instance. If you are an Emacs and Bash [[https://www.gnu.org/software/bash/manual/html_node/index.html][Fanatic]], then you should be on cloud nine by this point.
+
+I hope you are.
+
+Happy hacking!
+
 * Using EBSE With Keyboard Maestro
 
 [[https://www.keyboardmaestro.com/main/][Keyboard Maestro]] is a brilliant application. It does a million things, well, and it is easy to play around with it given the infinite evaluation period. Still, I only wanted it to do one thing: *use Emacs from anywhere inside MacOS*. Fortunately, it turns out to be easy. Here is all it takes:
