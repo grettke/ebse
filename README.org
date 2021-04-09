@@ -6,7 +6,13 @@ From a Bash Interactive Shell Running Commands on Emacs:
 
 From a Keyboard Maestro Non-Interactive Non-Login Shell Running Commands in Bash via Emacs:
 
+/The Macro/
+
 [[file:/demo-non.png]]
+
+/The Execution/
+
+[[file:demo-non-quote.png]]
 
 * TLDR
 
