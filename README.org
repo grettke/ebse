@@ -1,10 +1,10 @@
 #+title: Emacs Batch Server Eval
 
-From an Bash Interactive Shell:
+From an Bash Interactive Shell Running Commands on Emacs:
 
 [[file:/demo.png]]
 
-From a Keyboard Maestro Non-Interactive Non-Login Shell:
+From a Keyboard Maestro Non-Interactive Non-Login Shell Running Commands in Bash via Emacs:
 
 [[file:/demo-non.png]]
 
