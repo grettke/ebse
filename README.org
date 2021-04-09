@@ -1,6 +1,6 @@
 #+title: Emacs Batch Server Eval
 
-From an Bash Interactive Shell Running Commands on Emacs:
+From a Bash Interactive Shell Running Commands on Emacs:
 
 [[file:/demo.png]]
 
