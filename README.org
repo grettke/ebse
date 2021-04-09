@@ -1,6 +1,12 @@
 #+title: Emacs Batch Server Eval
 
+From an Bash Interactive Shell:
+
 [[file:/demo.png]]
+
+From a Keyboard Maestro Non-Interactive Non-Login Shell:
+
+[[file:/demo-non.png]]
 
 * TLDR
 
