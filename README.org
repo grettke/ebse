@@ -79,6 +79,6 @@ printf "How many is binary? $(ebse '(+ 1 1)')\n"
 conveniently pursue viral initiatives
   #+END_SRC
 - Now, switch it back to "type results".
-- From here on in, you can return to work with your newfound powerful combination of Emacs and Keyboard Maestro and rise the corporate ranks by compellingly scaling technically sound NoSQL or some such things!
+- From here on in, you can return to work with your newfound powerful combination of Emacs, Keyboard Maestro, and the Corporate BS Generator to rise the corporate ranks by compellingly scaling technically sound NoSQL or some such things!
 
 Suddenly you get the best of both worlds: 100% of Emacs available on 100% of your computer. It works brilliantly. I hope you have a lot of fun!
